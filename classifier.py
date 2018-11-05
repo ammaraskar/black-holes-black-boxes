@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from xgboost import XGBClassifier
+from functools import lru_cache
 
 
 fields = ['Observational Half-Light Radius',
@@ -29,6 +30,7 @@ def estimate_median_relaxation_time(data):
 estimate_median_relaxation_time(data)
 
 
+@lru_cache(maxsize=32)
 def make_classifier(use_relaxation_time_estimate=True, fallback_enabled=False):
     training_data = data.copy()
 
@@ -56,7 +58,5 @@ def predict(clf, X):
     if clf.use_relaxation_time_estimate:
         estimate_median_relaxation_time(X)
         X['Half-Mass Relaxation Time'] = X['Median Relaxation Time']
-
-    print(X)
 
     return clf.predict(X[fields])
