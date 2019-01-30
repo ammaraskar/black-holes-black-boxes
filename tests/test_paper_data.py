@@ -6,10 +6,10 @@ import pytest
 # MAJOR CAVEAT:
 # XGBoost has different random number generation across different operating
 # systems. The original code was run on a Windows computer, thus this test
-# checks that ~95% of the results match instead of all of them.
+# checks that ~96% of the results match instead of all of them.
 
 def arrays_almost_same(predictions, real):
-    return ((predictions == real).sum() / float(len(predictions))) > 0.95
+    return ((predictions == real).sum() / float(len(predictions))) > 0.96
 
 def test_holger_paper_data():
     # Load up the real holger data from the paper
