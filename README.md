@@ -22,3 +22,9 @@ Once launched just click "Run" in the top and scroll down to the form.
 - `simulations.csv` - CSV file containing data form MOCCA simulations.
 - `classifier.py` - Python code to generate and train the classifier.
 - `notebook.ipnyb` - Interactible Jupyter notebook.
+
+## Running Tests
+
+You may run the unit tests with:
+
+`python -m pytest`
